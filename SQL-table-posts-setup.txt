@@ -1,0 +1,34 @@
+CREATE TABLE posts (
+	id VARCHAR(50) PRIMARY KEY NOT NULL,
+	title TINYTEXT NOT NULL,
+	description TEXT NOT NULL,
+	contents LONGTEXT NOT NULL,
+	author TINYTEXT NOT NULL,
+	pathToImage TEXT,
+	dateCreated VARCHAR(50) NOT NULL,
+	comments LONGTEXT
+);
+
+--------------------------------------------------------
+
+INSERT INTO `posts`
+(`title`, `description`, `contents`, `author`, `pathToImage`, `dateCreated`, `pathToFile`)
+VALUES
+();
+--------------------------------------------------------
+
+DELETE FROM `posts` WHERE `posts`.`id` = '';
+--------------------------------------------------------
+
+CREATE TABLE users (
+	id INT(11) AUTO_INCREMENT PRIMARY KEY NOT NULL,
+	username TINYTEXT NOT NULL,
+	password TEXT NOT NULL
+);
+
+INSERT INTO `users`
+(`username`, `password`) VALUES (`admin`, ``);
+
+--------------------------------------------------------
+
+UPDATE `posts` SET `title`=?, `description`=?,`contents`=?, `author`=?, `pathToImage`=?, `dateCreated`=? WHERE `id`=?;

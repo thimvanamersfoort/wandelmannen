@@ -1,0 +1,25 @@
+.comments-list{
+    width: 100%;
+    max-height: 50vh;
+    overflow-y: scroll;
+}
+.comments-list > blockquote{
+    margin: 5px 0 1rem 5px;
+    padding-left: 1rem;
+    font-style: normal;
+    color: #6a6d70;
+    line-height: 1.3rem;
+}
+.comment-name::before{
+    content: "~";
+    padding-right: 4px;
+}
+.comment-name{
+    padding-top: 0.25rem;
+    font-size: 85%;
+    font-style: italic;
+    display: inline-block;
+}
+.new-comment{
+    margin-bottom: 2rem;
+}
