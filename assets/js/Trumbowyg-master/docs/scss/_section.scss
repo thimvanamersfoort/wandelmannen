@@ -6,7 +6,11 @@
 
 	&-primary {
 		color: $primary-color-dark;
-		background: linear-gradient(to bottom left, $primary-color, $primary-color-light);
+		background: linear-gradient(
+			to bottom left,
+			$primary-color,
+			$primary-color-light
+		);
 
 		.section-title {
 			color: $white;

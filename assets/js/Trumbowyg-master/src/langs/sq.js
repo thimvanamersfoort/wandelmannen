@@ -7,59 +7,57 @@
  */
 
 jQuery.trumbowyg.langs.sq = {
-    
-    viewHTML: 'Shfaq HTML',
+	viewHTML: "Shfaq HTML",
 
-    undo: 'Prish',
-    redo: 'Ribej',
+	undo: "Prish",
+	redo: "Ribej",
 
-    formatting: 'Formatimi',
-    p: 'Paragraf',
-    blockquote: 'Citat',
-    code: 'Kodi',
-    header: 'Koka',
+	formatting: "Formatimi",
+	p: "Paragraf",
+	blockquote: "Citat",
+	code: "Kodi",
+	header: "Koka",
 
-    bold: 'Spikatur',
-    italic: 'Pjerret',
-    strikethrough: 'Vize ne mes',
-    underline: 'Nenvizo',
+	bold: "Spikatur",
+	italic: "Pjerret",
+	strikethrough: "Vize ne mes",
+	underline: "Nenvizo",
 
-    strong: 'I trashe',
-    em: 'I theksuar',
-    del: 'I fshire',
+	strong: "I trashe",
+	em: "I theksuar",
+	del: "I fshire",
 
-    superscript: 'Indeks i sipërm',
-    subscript: 'Indeks i poshtem',
+	superscript: "Indeks i sipërm",
+	subscript: "Indeks i poshtem",
 
-    unorderedList: 'Liste e parenditur',
-    orderedList: 'Liste e renditur',
+	unorderedList: "Liste e parenditur",
+	orderedList: "Liste e renditur",
 
+	insertImage: "Fut Foto",
+	insertVideo: "Fut Video",
+	link: "Link",
+	createLink: "Krijo Link",
+	unlink: "Hiq Link",
 
-    insertImage: 'Fut Foto',
-    insertVideo: 'Fut Video',
-    link: 'Link',
-    createLink: 'Krijo Link',
-    unlink: 'Hiq Link',
+	justifyLeft: "Drejto Majtas",
+	justifyCenter: "Drejto ne Qender",
+	justifyRight: "Drejto Djathtas",
+	justifyFull: "Drejto Vete",
 
-    justifyLeft: 'Drejto Majtas',
-    justifyCenter: 'Drejto ne Qender',
-    justifyRight: 'Drejto Djathtas',
-    justifyFull: 'Drejto Vete',
+	horizontalRule: "Vendos rregulloren horizontale",
+	removeformat: "Hiq formatin",
 
-    horizontalRule: 'Vendos rregulloren horizontale',
-    removeformat: 'Hiq formatin',
+	fullscreen: "Ekran i plotë",
 
-    fullscreen: 'Ekran i plotë',
+	close: "Mbyll",
 
-    close: 'Mbyll',
+	submit: "Konfirmo",
+	reset: "Anullo",
 
-    submit: 'Konfirmo',
-    reset: 'Anullo',
-
-    required: 'I detyrueshem',
-    description: 'Pershkrimi',
-    title: 'Titulli',
-    text: 'Tekst',
-    target: 'Objektivi',
-    width: 'Gjeresia'
+	required: "I detyrueshem",
+	description: "Pershkrimi",
+	title: "Titulli",
+	text: "Tekst",
+	target: "Objektivi",
+	width: "Gjeresia",
 };

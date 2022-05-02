@@ -1,49 +1,39 @@
 <?php
-	session_start();
+session_start();
 
-	require_once 'includes/dbh.inc.php';
-	require_once 'includes/functions.inc.php';
+require_once 'includes/dbh.inc.php';
+require_once 'includes/functions.inc.php';
 
-	$results_per_page = 10;
+$results_per_page = 10;
 
-	$sql='SELECT * FROM posts';
-	$result = mysqli_query($conn, $sql);
+$sql = 'SELECT * FROM posts';
+$result = mysqli_query($conn, $sql);
 
-	if(mysqli_num_rows($result) > 0)
-	{
-		$number_of_results = mysqli_num_rows($result);
-		$number_of_pages = ceil($number_of_results/$results_per_page);
-	}
-	else{
-		$number_of_pages = 1;
-	}
+if (mysqli_num_rows($result) > 0) {
+	$number_of_results = mysqli_num_rows($result);
+	$number_of_pages = ceil($number_of_results / $results_per_page);
+} else {
+	$number_of_pages = 1;
+}
 
-	if(!isset($_GET['page'])) {
-		$page = 1;
-		header("Location: index.php?page=" . $page); 
-	}
-	else if(empty($_GET['page'])){
-		$page = 1;
-		header("Location: index.php?page=" . $page); 
-	}
-	else if($_GET['page'] > $number_of_pages)
-	{
-		$page = 1;
-		header("Location: index.php?page=" . $page);
-	}
-	else{
-		$page = $_GET['page'];
-	}
+if (!isset($_GET['page'])) {
+	$page = 1;
+	header('Location: index.php?page=' . $page);
+} elseif (empty($_GET['page'])) {
+	$page = 1;
+	header('Location: index.php?page=' . $page);
+} elseif ($_GET['page'] > $number_of_pages) {
+	$page = 1;
+	header('Location: index.php?page=' . $page);
+} else {
+	$page = $_GET['page'];
+}
 
-	if(!$page > 1)
-	{
-		$this_page_first_result = $page * $results_per_page;
-	}
-	else
-	{
-		$this_page_first_result = ($page-1)*$results_per_page;
-	}
-
+if (!$page > 1) {
+	$this_page_first_result = $page * $results_per_page;
+} else {
+	$this_page_first_result = ($page - 1) * $results_per_page;
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -131,48 +121,57 @@
 								<div id="myCarousel" class="carousel slide" data-ride="carousel">
 									<div class="carousel-inner">
 
-										<?php 
+										<?php
+          $sql1 =
+          	'SELECT * FROM posts ORDER BY `id` DESC LIMIT ' .
+          	$this_page_first_result .
+          	',' .
+          	$results_per_page;
+          $result1 = mysqli_query($conn, $sql1);
+          $i = 0;
 
-											$sql1 = 'SELECT * FROM posts ORDER BY `id` DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
-											$result1 = mysqli_query($conn, $sql1);
-											$i = 0;
-		
-											$array = array();
-											while($row = mysqli_fetch_assoc($result1))
-											{
-												$array[] = $row;
-											}
-											if(empty($array)){
-												echo '<div class="carousel-item active">';
-												echo '<img src="images/placeholder.gif">';
-												echo '<div class="carousel-caption d-none d-md-block">
+          $array = [];
+          while ($row = mysqli_fetch_assoc($result1)) {
+          	$array[] = $row;
+          }
+          if (empty($array)) {
+          	echo '<div class="carousel-item active">';
+          	echo '<img src="images/placeholder.gif">';
+          	echo '<div class="carousel-caption d-none d-md-block">
 														<h4><span class="capt-title">###</span></h4>
 													</div>';
-												echo '</div>';
-											}
-										
-											foreach($array as $key => $value)
-											{
-                        // base string is $array[$key]
-                        // doordat imagePath in json gecodeerd is, moet het gedecodeerd worden
-												$imagePath = json_decode($array[$key]['pathToImage'], true);
+          	echo '</div>';
+          }
 
-												if($i == 0 ){echo '<div class="carousel-item active">';}
-												else {echo '<div class="carousel-item">';}
+          foreach ($array as $key => $value) {
+          	// base string is $array[$key]
+          	// doordat imagePath in json gecodeerd is, moet het gedecodeerd worden
+          	$imagePath = json_decode($array[$key]['pathToImage'], true);
 
-                        echo '<img src="#" data-id="'. $array[$key]['id'] .'" class="skeleton">';
+          	if ($i == 0) {
+          		echo '<div class="carousel-item active">';
+          	} else {
+          		echo '<div class="carousel-item">';
+          	}
 
-												echo '<div class="carousel-caption d-none d-md-block">
-														<h5><span class="capt-title">' . $array[$key]['title'] . '</span></h5>
-														<a class="button small primary" style="font-style: normal;" href="post.php?postId='. $array[$key]['id'] .'">Lees nu</a>
+          	echo '<img src="#" data-id="' .
+          		$array[$key]['id'] .
+          		'" class="skeleton">';
+
+          	echo '<div class="carousel-caption d-none d-md-block">
+														<h5><span class="capt-title">' .
+          		$array[$key]['title'] .
+          		'</span></h5>
+														<a class="button small primary" style="font-style: normal;" href="post.php?postId=' .
+          		$array[$key]['id'] .
+          		'">Lees nu</a>
 													</div>';
 
-												echo '</div>';
+          	echo '</div>';
 
-												$i++;
-
-											}
-										?>
+          	$i++;
+          }
+          ?>
 
 										<a class="carousel-control-prev" href="#myCarousel" data-slide="prev">
 											<span class="carousel-control-prev-icon"></span>
@@ -202,66 +201,72 @@
 							<section class="posts">
 								
 								<?php
-
-									if(isset($_GET['page']))
-									{
-										echo '<h2 style="margin-left: .75rem; margin-top: 2.25rem; margin-bottom: .75rem;">
-                    Blogposts (pagina '. $_GET['page'] . '):
+        if (isset($_GET['page'])) {
+        	echo '<h2 style="margin-left: .75rem; margin-top: 2.25rem; margin-bottom: .75rem;">
+                    Blogposts (pagina ' .
+        		$_GET['page'] .
+        		'):
                     </h2>';
-									}
+        }
 
+        $sql1 =
+        	'SELECT * FROM posts ORDER BY `id` DESC LIMIT ' .
+        	$this_page_first_result .
+        	',' .
+        	$results_per_page;
+        $result1 = mysqli_query($conn, $sql1);
 
-									$sql1 = 'SELECT * FROM posts ORDER BY `id` DESC LIMIT ' . $this_page_first_result . ',' .  $results_per_page;
-									$result1 = mysqli_query($conn, $sql1);
+        $array = [];
+        while ($row = mysqli_fetch_assoc($result1)) {
+        	$array[] = $row;
+        }
 
-									$array = array();
-									while($row = mysqli_fetch_assoc($result1))
-									{
-										$array[] = $row;
-									}
+        foreach ($array as $key => $value) {
+        	$imagePath = json_decode($array[$key]['pathToImage'], true);
 
-									foreach($array as $key => $value)
-									{
-										$imagePath = json_decode($array[$key]['pathToImage'], true);
+        	echo '<a class="post-item" href="post.php?postId=' .
+        		$array[$key]['id'] .
+        		'">';
 
-										echo '<a class="post-item" href="post.php?postId='. $array[$key]['id'] .'">';
-                    
-                    echo '<span class="post-image skeleton" data-id="'. $array[$key]['id'] .'"></span>';
+        	echo '<span class="post-image skeleton" data-id="' .
+        		$array[$key]['id'] .
+        		'"></span>';
 
-										echo '<div class="post-title-outer">
-												<span class="post-title">' . $array[$key]['title'] . '</span>
+        	echo '<div class="post-title-outer">
+												<span class="post-title">' .
+        		$array[$key]['title'] .
+        		'</span>
 												<span class="post-description">
-                          <span class="post-info"> ' . $array[$key]['author'] . ' / ' . $array[$key]['dateCreated'] . '</span>' . 
-                          $array[$key]['description'] . 
-                        '</span>
+                          <span class="post-info"> ' .
+        		$array[$key]['author'] .
+        		' / ' .
+        		$array[$key]['dateCreated'] .
+        		'</span>' .
+        		$array[$key]['description'] .
+        		'</span>
 											</div>
 											<span class="post-button">
 												<img src="assets/img/chevron-right.svg">
 											</span>
 										</a>';
-									}
-
-								?>
+        }
+        ?>
 							</section>
 
 						<!-- Footer -->
 							<footer>
 								<div class="pagination">
-									<?php
-										
-										for($page=1; $page<=$number_of_pages; $page++)
-										{
-											if(isset($_GET['page']) && $_GET['page'] == $page)
-											{
-												echo '<a href="index.php?page='. $page . '" class="page active">'. $page .' </a>';
-											}
-											else
-											{
-												echo '<a href="index.php?page='. $page . '">'. $page .' </a>';
-											}
-										}
-
-									?>
+									<?php for ($page = 1; $page <= $number_of_pages; $page++) {
+         	if (isset($_GET['page']) && $_GET['page'] == $page) {
+         		echo '<a href="index.php?page=' .
+         			$page .
+         			'" class="page active">' .
+         			$page .
+         			' </a>';
+         	} else {
+         		echo '<a href="index.php?page=' . $page . '">' . $page . ' </a>';
+         	}
+         } ?>
 								</div>
 							</footer>
 

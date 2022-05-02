@@ -1,11 +1,9 @@
 $(() => {
+	var skeletonArray = [];
 
-  var skeletonArray = [];
+	$(".skeleton").each((index, element) => {
+		skeletonArray.push($(element).attr("data-id"));
+	});
 
-  $('.skeleton').each((index, element) => {
-    skeletonArray.push( $(element).attr('data-id') );
-  });
-
-  console.log(skeletonArray);
-  
+	console.log(skeletonArray);
 });

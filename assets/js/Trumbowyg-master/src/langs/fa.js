@@ -9,50 +9,50 @@
  */
 
 jQuery.trumbowyg.langs.fa = {
-    _dir: 'rtl',
-    
-    viewHTML: 'نمایش کد اچ تی ام ال',
+	_dir: "rtl",
 
-    formatting: 'قالب بندی',
-    p: 'پاراگراف',
-    blockquote: 'نقل قول',
-    code: 'کد',
-    header: 'سر تیتر',
+	viewHTML: "نمایش کد اچ تی ام ال",
 
-    bold: 'ضخیم',
-    italic: 'مورب',
-    strikethrough: 'میان خط دار',
-    underline: 'زیر خط دار',
+	formatting: "قالب بندی",
+	p: "پاراگراف",
+	blockquote: "نقل قول",
+	code: "کد",
+	header: "سر تیتر",
 
-    strong: 'برجسته',
-    em: 'مورب',
-    del: 'حذف شده',
+	bold: "ضخیم",
+	italic: "مورب",
+	strikethrough: "میان خط دار",
+	underline: "زیر خط دار",
 
-    unorderedList: 'لیست نامرتب',
-    orderedList: 'لیست مرتب',
+	strong: "برجسته",
+	em: "مورب",
+	del: "حذف شده",
 
-    insertImage: 'درج تصویر',
-    insertVideo: 'درج ویدئو',
-    link: 'لینک',
-    createLink: 'درج لینک',
-    unlink: 'حذف لینک',
+	unorderedList: "لیست نامرتب",
+	orderedList: "لیست مرتب",
 
-    justifyLeft: 'تراز به چپ',
-    justifyCenter: 'تراز به وسط',
-    justifyRight: 'تراز به راست',
-    justifyFull: 'تراز به چپ و راست',
+	insertImage: "درج تصویر",
+	insertVideo: "درج ویدئو",
+	link: "لینک",
+	createLink: "درج لینک",
+	unlink: "حذف لینک",
 
-    horizontalRule: 'درج خط افقی',
+	justifyLeft: "تراز به چپ",
+	justifyCenter: "تراز به وسط",
+	justifyRight: "تراز به راست",
+	justifyFull: "تراز به چپ و راست",
 
-    fullscreen: 'تمام صفحه',
+	horizontalRule: "درج خط افقی",
 
-    close: 'بستن',
+	fullscreen: "تمام صفحه",
 
-    submit: 'تائید',
-    reset: 'انصراف',
+	close: "بستن",
 
-    required: 'اجباری',
-    description: 'توضیحات',
-    title: 'عنوان',
-    text: 'متن'
+	submit: "تائید",
+	reset: "انصراف",
+
+	required: "اجباری",
+	description: "توضیحات",
+	title: "عنوان",
+	text: "متن",
 };

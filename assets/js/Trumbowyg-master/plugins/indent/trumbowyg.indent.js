@@ -1,4 +1,3 @@
-
 /* ===========================================================
  * trumbowyg.indent.js v1.0
  * Indent or Outdent plugin for Trumbowyg
@@ -8,49 +7,55 @@
  *          Website : https://github.com/Fabacks
  */
 
- (function ($) {
-    'use strict';
+(function ($) {
+	"use strict";
 
-    $.extend(true, $.trumbowyg, {
-        langs: {
-            en: {
-                indent: 'Indent',
-                outdent: 'Outdent'  
-            },
-            fr: {
-                indent: 'Augmenter le retrait',
-                outdent: 'Diminuer le retrait'
-            }
-        }
-    });
+	$.extend(true, $.trumbowyg, {
+		langs: {
+			en: {
+				indent: "Indent",
+				outdent: "Outdent",
+			},
+			fr: {
+				indent: "Augmenter le retrait",
+				outdent: "Diminuer le retrait",
+			},
+		},
+	});
 
-    // Adds the extra button definition
-    $.extend(true, $.trumbowyg, {
-        plugins: {
-            paragraph: {
-                init: function (trumbowyg) {
-                    var indentBtnDef = {
-                        fn: 'indent',
-                        title: trumbowyg.lang.indent,
-                        isSupported: function () { 
-                            return !!document.queryCommandSupported && !!document.queryCommandSupported('indent'); 
-                        },
-                        ico: 'indent'
-                    };
+	// Adds the extra button definition
+	$.extend(true, $.trumbowyg, {
+		plugins: {
+			paragraph: {
+				init: function (trumbowyg) {
+					var indentBtnDef = {
+						fn: "indent",
+						title: trumbowyg.lang.indent,
+						isSupported: function () {
+							return (
+								!!document.queryCommandSupported &&
+								!!document.queryCommandSupported("indent")
+							);
+						},
+						ico: "indent",
+					};
 
-                    var outdentBtnDef = {
-                        fn: 'outdent',
-                        title: trumbowyg.lang.outdent,
-                        isSupported: function () { 
-                            return !!document.queryCommandSupported && !!document.queryCommandSupported('outdent'); 
-                        },
-                        ico: 'outdent'
-                    };
+					var outdentBtnDef = {
+						fn: "outdent",
+						title: trumbowyg.lang.outdent,
+						isSupported: function () {
+							return (
+								!!document.queryCommandSupported &&
+								!!document.queryCommandSupported("outdent")
+							);
+						},
+						ico: "outdent",
+					};
 
-                    trumbowyg.addBtnDef('indent', indentBtnDef);
-                    trumbowyg.addBtnDef('outdent', outdentBtnDef);
-                }
-            }
-        }
-    });
+					trumbowyg.addBtnDef("indent", indentBtnDef);
+					trumbowyg.addBtnDef("outdent", outdentBtnDef);
+				},
+			},
+		},
+	});
 })(jQuery);

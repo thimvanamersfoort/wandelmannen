@@ -10,58 +10,58 @@
  */
 
 jQuery.trumbowyg.langs.ar = {
-    _dir: 'rtl',
+	_dir: "rtl",
 
-    viewHTML: 'إعرض-HTML',
+	viewHTML: "إعرض-HTML",
 
-    undo: 'تراجع',
-    redo: 'إعادة',
+	undo: "تراجع",
+	redo: "إعادة",
 
-    formatting: 'تنسيق',
+	formatting: "تنسيق",
 
-    p: 'فقرة',
-    blockquote: 'اقتباس',
-    code: 'كود',
-    header: 'رأس',
+	p: "فقرة",
+	blockquote: "اقتباس",
+	code: "كود",
+	header: "رأس",
 
-    bold: 'عريض',
-    italic: 'مائل',
-    strikethrough: 'مشطوب',
-    underline: 'خطّ سفلي',
+	bold: "عريض",
+	italic: "مائل",
+	strikethrough: "مشطوب",
+	underline: "خطّ سفلي",
 
-    strong: 'بارز',
-    em: 'تغميق',
-    del: 'حذف',
+	strong: "بارز",
+	em: "تغميق",
+	del: "حذف",
 
-    superscript: 'الأس',
-    subscript: 'أس سفلي',
+	superscript: "الأس",
+	subscript: "أس سفلي",
 
-    unorderedList: 'قائمة غير مرتّبة',
-    orderedList: 'قائمة مرتّبة',
+	unorderedList: "قائمة غير مرتّبة",
+	orderedList: "قائمة مرتّبة",
 
-    insertImage: 'إدراج صورة',
-    insertVideo: 'إدراج فيديو',
-    link: 'رابط',
-    createLink: 'انشاء رابط',
-    unlink: 'حذف رابط',
+	insertImage: "إدراج صورة",
+	insertVideo: "إدراج فيديو",
+	link: "رابط",
+	createLink: "انشاء رابط",
+	unlink: "حذف رابط",
 
-    justifyLeft: 'تصحيح للشمال',
-    justifyCenter: 'توسيط',
-    justifyRight: 'تصحيح لليمين',
-    justifyFull: 'تصحيح لكلا الإتّجاهين',
+	justifyLeft: "تصحيح للشمال",
+	justifyCenter: "توسيط",
+	justifyRight: "تصحيح لليمين",
+	justifyFull: "تصحيح لكلا الإتّجاهين",
 
-    horizontalRule: 'إدراج خطّ أفقي',
+	horizontalRule: "إدراج خطّ أفقي",
 
-    fullscreen: 'ملء الشاشة',
+	fullscreen: "ملء الشاشة",
 
-    close: 'إغلاق',
+	close: "إغلاق",
 
-    submit: 'إرسال',
-    reset: 'إعادة تعيين',
+	submit: "إرسال",
+	reset: "إعادة تعيين",
 
-    required: 'إلزامي',
-    description: 'وصف',
-    title: 'عنوان',
-    text: 'نصّ',
-    target: 'الهدف'
+	required: "إلزامي",
+	description: "وصف",
+	title: "عنوان",
+	text: "نصّ",
+	target: "الهدف",
 };

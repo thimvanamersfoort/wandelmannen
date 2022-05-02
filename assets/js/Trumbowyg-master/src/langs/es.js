@@ -8,56 +8,56 @@
  */
 
 jQuery.trumbowyg.langs.es = {
-    viewHTML: 'Ver HTML',
+	viewHTML: "Ver HTML",
 
-    undo: 'Deshacer',
-    redo: 'Rehacer',
+	undo: "Deshacer",
+	redo: "Rehacer",
 
-    formatting: 'Formato',
-    p: 'Párrafo',
-    blockquote: 'Cita',
-    code: 'Código',
-    header: 'Título',
+	formatting: "Formato",
+	p: "Párrafo",
+	blockquote: "Cita",
+	code: "Código",
+	header: "Título",
 
-    bold: 'Negrita',
-    italic: 'Cursiva',
-    strikethrough: 'Tachado',
-    underline: 'Subrayado',
+	bold: "Negrita",
+	italic: "Cursiva",
+	strikethrough: "Tachado",
+	underline: "Subrayado",
 
-    strong: 'Negrita',
-    em: 'Énfasis',
-    del: 'Borrar',
+	strong: "Negrita",
+	em: "Énfasis",
+	del: "Borrar",
 
-    superscript: 'Sobrescrito',
-    subscript: 'Subíndice',
+	superscript: "Sobrescrito",
+	subscript: "Subíndice",
 
-    unorderedList: 'Lista Desordenada',
-    orderedList: 'Lista Ordenada',
+	unorderedList: "Lista Desordenada",
+	orderedList: "Lista Ordenada",
 
-    insertImage: 'Insertar una imagen',
-    insertVideo: 'Insertar un vídeo',
-    link: 'Enlace',
-    createLink: 'Insertar un enlace',
-    unlink: 'Suprimir un enlace',
+	insertImage: "Insertar una imagen",
+	insertVideo: "Insertar un vídeo",
+	link: "Enlace",
+	createLink: "Insertar un enlace",
+	unlink: "Suprimir un enlace",
 
-    justifyLeft: 'Izquierda',
-    justifyCenter: 'Centrar',
-    justifyRight: 'Derecha',
-    justifyFull: 'Justificado',
+	justifyLeft: "Izquierda",
+	justifyCenter: "Centrar",
+	justifyRight: "Derecha",
+	justifyFull: "Justificado",
 
-    horizontalRule: 'Insertar separador horizontal',
-    removeformat: 'Eliminar formato',
+	horizontalRule: "Insertar separador horizontal",
+	removeformat: "Eliminar formato",
 
-    fullscreen: 'Pantalla completa',
+	fullscreen: "Pantalla completa",
 
-    close: 'Cerrar',
+	close: "Cerrar",
 
-    submit: 'Enviar',
-    reset: 'Cancelar',
+	submit: "Enviar",
+	reset: "Cancelar",
 
-    required: 'Obligatorio',
-    description: 'Descripción',
-    title: 'Título',
-    text: 'Texto',
-    target: 'Target'
+	required: "Obligatorio",
+	description: "Descripción",
+	title: "Título",
+	text: "Texto",
+	target: "Target",
 };

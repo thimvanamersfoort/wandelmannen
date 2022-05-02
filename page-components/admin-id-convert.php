@@ -22,21 +22,17 @@ echo '
         <h4>Idate vanaf UNIX Epoch:</h4>
         <p name="idate" id="idate" class="box"><i style="word-wrap: break-word;">';
 
-if(!empty($_POST["date-id"]))
-{
-    $date = $_POST["date-id"];
-    $time = strtotime($date);
+if (!empty($_POST['date-id'])) {
+	$date = $_POST['date-id'];
+	$time = strtotime($date);
 }
 
-if(empty($time))
-{
-    echo "Field is empty!";
+if (empty($time)) {
+	echo 'Field is empty!';
+} else {
+	echo $time;
 }
-else
-{
-    echo $time;
-}
-                                
+
 echo '</i></p></div></div></form></div>';
 
 echo '<script>

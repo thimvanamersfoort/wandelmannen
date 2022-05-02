@@ -8,51 +8,51 @@
  */
 
 jQuery.trumbowyg.langs.fi = {
-    viewHTML: 'Näytä HTML',
-    
-    undo: 'Kumoa',
-    redo: 'Tee uudelleen',
+	viewHTML: "Näytä HTML",
 
-    formatting: 'Muotoilu',
-    p: 'Kappale',
-    blockquote: 'Lainaus',
-    code: 'Koodi',
-    header: 'Otsikko',
+	undo: "Kumoa",
+	redo: "Tee uudelleen",
 
-    bold: 'Lihavointi',
-    italic: 'Kursivointi',
-    strikethrough: 'Yliviivaus',
-    underline: 'Allevivaus',
+	formatting: "Muotoilu",
+	p: "Kappale",
+	blockquote: "Lainaus",
+	code: "Koodi",
+	header: "Otsikko",
 
-    strong: 'Vahvennus',
-    em: 'Painotus',
-    del: 'Poistettu',
+	bold: "Lihavointi",
+	italic: "Kursivointi",
+	strikethrough: "Yliviivaus",
+	underline: "Allevivaus",
 
-    unorderedList: 'Luettelo',
-    orderedList: 'Numeroitu luettelo',
+	strong: "Vahvennus",
+	em: "Painotus",
+	del: "Poistettu",
 
-    insertImage: 'Lisää kuva',
-    insertVideo: 'Lisää video',
-    link: 'Linkki',
-    createLink: 'Luo linkki',
-    unlink: 'Poista linkki',
+	unorderedList: "Luettelo",
+	orderedList: "Numeroitu luettelo",
 
-    justifyLeft: 'Tasaa vasemmalle',
-    justifyCenter: 'Keskitä',
-    justifyRight: 'Tasaa oikealle',
-    justifyFull: 'Tasaa',
+	insertImage: "Lisää kuva",
+	insertVideo: "Lisää video",
+	link: "Linkki",
+	createLink: "Luo linkki",
+	unlink: "Poista linkki",
 
-    horizontalRule: 'Vaakaviiva',
+	justifyLeft: "Tasaa vasemmalle",
+	justifyCenter: "Keskitä",
+	justifyRight: "Tasaa oikealle",
+	justifyFull: "Tasaa",
 
-    fullscreen: 'Kokoruutu',
+	horizontalRule: "Vaakaviiva",
 
-    close: 'Sulje',
+	fullscreen: "Kokoruutu",
 
-    submit: 'Lisää',
-    reset: 'Palauta',
+	close: "Sulje",
 
-    required: 'Pakollinen',
-    description: 'Kuvaus',
-    title: 'Otsikko',
-    text: 'Teksti'
+	submit: "Lisää",
+	reset: "Palauta",
+
+	required: "Pakollinen",
+	description: "Kuvaus",
+	title: "Otsikko",
+	text: "Teksti",
 };

@@ -10,56 +10,56 @@
  */
 
 jQuery.trumbowyg.langs.pt = {
-    viewHTML: 'Ver HTML',
-    
-    undo: 'Desfazer',
-    redo: 'Refazer',
+	viewHTML: "Ver HTML",
 
-    formatting: 'Formatar',
-    p: 'Paragráfo',
-    blockquote: 'Citação',
-    code: 'Código',
-    header: 'Título',
+	undo: "Desfazer",
+	redo: "Refazer",
 
-    bold: 'Negrito',
-    italic: 'Itálico',
-    strikethrough: 'Suprimir',
-    underline: 'Sublinhado',
+	formatting: "Formatar",
+	p: "Paragráfo",
+	blockquote: "Citação",
+	code: "Código",
+	header: "Título",
 
-    strong: 'Negrito',
-    em: 'Ênfase',
-    del: 'Apagar',
+	bold: "Negrito",
+	italic: "Itálico",
+	strikethrough: "Suprimir",
+	underline: "Sublinhado",
 
-    superscript: 'Sobrescrito',
-    subscript: 'Subscrito',
-            
-    unorderedList: 'Lista não ordenada',
-    orderedList: 'Lista ordenada',
+	strong: "Negrito",
+	em: "Ênfase",
+	del: "Apagar",
 
-    insertImage: 'Inserir imagem',
-    insertVideo: 'Inserir vídeo',
-    link: 'Link',
-    createLink: 'Criar um link',
-    unlink: 'Remover link',
+	superscript: "Sobrescrito",
+	subscript: "Subscrito",
 
-    justifyLeft: 'Alinhar a esquerda',
-    justifyCenter: 'Centralizar',
-    justifyRight: 'Alinhar a direita',
-    justifyFull: 'Justificar',
+	unorderedList: "Lista não ordenada",
+	orderedList: "Lista ordenada",
 
-    horizontalRule: 'Inserir separador horizontal',
-    removeformat: 'Remover formatação',
+	insertImage: "Inserir imagem",
+	insertVideo: "Inserir vídeo",
+	link: "Link",
+	createLink: "Criar um link",
+	unlink: "Remover link",
 
-    fullscreen: 'Tela cheia',
+	justifyLeft: "Alinhar a esquerda",
+	justifyCenter: "Centralizar",
+	justifyRight: "Alinhar a direita",
+	justifyFull: "Justificar",
 
-    close: 'Fechar',
+	horizontalRule: "Inserir separador horizontal",
+	removeformat: "Remover formatação",
 
-    submit: 'Enviar',
-    reset: 'Limpar',
+	fullscreen: "Tela cheia",
 
-    required: 'Obrigatório',
-    description: 'Descrição',
-    title: 'Título',
-    text: 'Texto',
-    target: 'Target'
+	close: "Fechar",
+
+	submit: "Enviar",
+	reset: "Limpar",
+
+	required: "Obrigatório",
+	description: "Descrição",
+	title: "Título",
+	text: "Texto",
+	target: "Target",
 };

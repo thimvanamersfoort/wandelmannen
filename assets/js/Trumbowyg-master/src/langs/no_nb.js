@@ -9,48 +9,48 @@
 
 // jshint camelcase:false
 jQuery.trumbowyg.langs.no_nb = {
-    viewHTML: 'Vis HTML',
+	viewHTML: "Vis HTML",
 
-    formatting: 'Formater',
-    p: 'Avsnitt',
-    blockquote: 'Sitat',
-    code: 'Kode',
-    header: 'Overskrift',
+	formatting: "Formater",
+	p: "Avsnitt",
+	blockquote: "Sitat",
+	code: "Kode",
+	header: "Overskrift",
 
-    bold: 'Fet',
-    italic: 'Kursiv',
-    strikethrough: 'Gjennomstreking',
-    underline: 'Understreking',
+	bold: "Fet",
+	italic: "Kursiv",
+	strikethrough: "Gjennomstreking",
+	underline: "Understreking",
 
-    strong: 'Viktig',
-    em: 'Fremhevet',
-    del: 'Slettet',
+	strong: "Viktig",
+	em: "Fremhevet",
+	del: "Slettet",
 
-    unorderedList: 'Uordnet liste',
-    orderedList: 'Ordnet liste',
+	unorderedList: "Uordnet liste",
+	orderedList: "Ordnet liste",
 
-    insertImage: 'Sett inn bilde',
-    insertVideo: 'Sett inn video',
-    link: 'Lenke',
-    createLink: 'Sett inn lenke',
-    unlink: 'Fjern lenke',
+	insertImage: "Sett inn bilde",
+	insertVideo: "Sett inn video",
+	link: "Lenke",
+	createLink: "Sett inn lenke",
+	unlink: "Fjern lenke",
 
-    justifyLeft: 'Venstrejuster',
-    justifyCenter: 'Midtstill',
-    justifyRight: 'Høyrejuster',
-    justifyFull: 'Blokkjuster',
+	justifyLeft: "Venstrejuster",
+	justifyCenter: "Midtstill",
+	justifyRight: "Høyrejuster",
+	justifyFull: "Blokkjuster",
 
-    horizontalRule: 'Horisontal linje',
+	horizontalRule: "Horisontal linje",
 
-    fullscreen: 'Full skjerm',
+	fullscreen: "Full skjerm",
 
-    close: 'Lukk',
+	close: "Lukk",
 
-    submit: 'Bekreft',
-    reset: 'Avbryt',
+	submit: "Bekreft",
+	reset: "Avbryt",
 
-    required: 'Påkrevd',
-    description: 'Beskrivelse',
-    title: 'Tittel',
-    text: 'Tekst'
+	required: "Påkrevd",
+	description: "Beskrivelse",
+	title: "Tittel",
+	text: "Tekst",
 };

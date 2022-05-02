@@ -1,7 +1,7 @@
 <!--- Provide a general summary of the issue in the Title above -->
 
-
 ### Description
+
 <!--
 Provide relevant details according to the context:
   - OS
@@ -10,8 +10,8 @@ Provide relevant details according to the context:
   - ...
 -->
 
-
 ### How to reproduce?
+
 <!--
 If relevant, provide a link to a live example based on: https://jsfiddle.net/AlexandreDemode/p7hb3x6u/
   - Edit

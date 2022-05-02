@@ -1,64 +1,54 @@
 <?php
 
-	session_start();
-	require_once 'includes/functions.inc.php';
+session_start();
+require_once 'includes/functions.inc.php';
 
-	if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
-	{
-		header("Location: admin.php?error=unvalidatedPhpActivation");
+if (!isset($_SESSION['userName']) || !isset($_SESSION['userId'])) {
+	header('Location: admin.php?error=unvalidatedPhpActivation');
+	exit();
+} elseif (!isset($_GET['postId'])) {
+	require_once 'includes/dbh-posts.inc.php';
+
+	header(
+		'Location: admin.php?error=postIdNotFound&threadId=' .
+			mysqli_thread_id($conn)
+	);
+	exit();
+} else {
+	require_once 'includes/dbh.inc.php';
+
+	$sql = 'SELECT * FROM `posts` WHERE `id`=?;';
+
+	$stmt = mysqli_stmt_init($conn);
+
+	if (!mysqli_stmt_prepare($stmt, $sql)) {
+		header('Location: ../admin.php?error=sqlError');
 		exit();
-	}
-	else if(!isset($_GET['postId']))
-	{
-		require_once 'includes/dbh-posts.inc.php';
+	} else {
+		mysqli_stmt_bind_param($stmt, 's', $_GET['postId']);
+		mysqli_stmt_execute($stmt);
 
-		header("Location: admin.php?error=postIdNotFound&threadId=". mysqli_thread_id($conn));
-		exit();
-	}
-	else
-	{
-		require_once 'includes/dbh.inc.php';
+		$result = mysqli_stmt_get_result($stmt);
 
+		$row = mysqli_fetch_assoc($result);
 
-		$sql = "SELECT * FROM `posts` WHERE `id`=?;";
-
-		$stmt = mysqli_stmt_init($conn);
-
-		if(!mysqli_stmt_prepare($stmt, $sql))
-		{
-			header("Location: ../admin.php?error=sqlError");
+		if (empty($row)) {
+			header('Location: admin.php?error=noMatchingRowFound');
 			exit();
-		}
-		else
-		{
-			mysqli_stmt_bind_param($stmt, "s", $_GET['postId']);
-			mysqli_stmt_execute($stmt);
+		} else {
+			$postId = $row['id'];
+			$postTitle = $row['title'];
+			$postDescription = $row['description'];
+			$postContents = $row['contents'];
+			$postAuthor = $row['author'];
+			$postPathToImage = $row['pathToImage'];
+			$postDateCreated = $row['dateCreated'];
 
-			$result = mysqli_stmt_get_result($stmt);
-
-			$row = mysqli_fetch_assoc($result);
-
-			if(empty($row))
-			{
-				header("Location: admin.php?error=noMatchingRowFound");
-				exit();
-			}
-			else
-			{
-				$postId = $row['id'];
-				$postTitle = $row['title'];
-				$postDescription = $row['description'];
-				$postContents = $row['contents'];
-				$postAuthor = $row['author'];
-				$postPathToImage = $row['pathToImage'];
-				$postDateCreated = $row['dateCreated'];
-				
-				$_SESSION['tempId'] = $postId;
-				$_SESSION['tempPath'] = $postPathToImage;
-			}
+			$_SESSION['tempId'] = $postId;
+			$_SESSION['tempPath'] = $postPathToImage;
 		}
 	}
-
+}
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -95,7 +85,8 @@
 
 				<!-- Header -->
 					<header id="header">
-						<a href=<?php echo "edit.php?postId=".$postId ?> class="logo">Blogposts aanpassen</a>
+						<a href=<?php echo 'edit.php?postId=' .
+      	$postId; ?> class="logo">Blogposts aanpassen</a>
 					</header>
 
 				<!-- Nav -->
@@ -115,12 +106,9 @@
 					<div id="main">
     	                <section>
 							
-						<?php
-								if(isset($_GET['error']))
-								{
-									if($_GET['error'] == "imageUploadError")
-									{
-										echo '<div class="box">
+						<?php if (isset($_GET['error'])) {
+      	if ($_GET['error'] == 'imageUploadError') {
+      		echo '<div class="box">
 												<header>
 													<h2 style="color:red">Error:</h2>
 													<p>Er is een onverwachte fout opgetreden tijdens het uploaden van je foto. Kijk in de URL voor meer informatie.</p>
@@ -128,10 +116,8 @@
 													<a href="edit.php" class="button small">Sluiten</a>
 												</header>
 											</div>';
-									}
-									else if($_GET['error'] == "imageSizeTooBig")
-									{
-										echo '<div class="box">
+      	} elseif ($_GET['error'] == 'imageSizeTooBig') {
+      		echo '<div class="box">
 												<header>
 													<h2 style="color:red">Error:</h2>
 													<p>De grootte van je geuploade foto overschrijdt de maximale grootte van 5 MB. Upload aub een foto met een kleinere bestandsgrootte.</p>
@@ -139,10 +125,8 @@
 													<a href="edit.php" class="button small">Sluiten</a>
 												</header>
 											</div>';
-									}
-									else if($_GET['error'] == "edit")
-									{
-										echo '<div class="box">
+      	} elseif ($_GET['error'] == 'edit') {
+      		echo '<div class="box">
 												<header>
 													<h2 style="color:green">Je post is met succes aangepast!</h2>
 													<p>Je aangepaste post is <a href="admin.php" style="color:green">hier</a> te bekijken. Ook is de home-pagina met je laatste posts geupdated.</p>
@@ -150,13 +134,16 @@
 													<a href="admin.php" class="button small">Sluiten</a>
 												</header>
 											</div>';
-									}
-								}
-							?>
+      	}
+      } ?>
 
 							<h2>Aanpassen / verwijderen van blogpost:</h2>
-							<p><b>Momenteel geselecteerde blogpost: </b><?php echo "<i>". $postTitle ."</i>"?><br>
-							<b>Datum van laatste aanpassing: </b><?php echo "<i>". $postDateCreated ."</i>"?></p>
+							<p><b>Momenteel geselecteerde blogpost: </b><?php echo '<i>' .
+       	$postTitle .
+       	'</i>'; ?><br>
+							<b>Datum van laatste aanpassing: </b><?php echo '<i>' .
+       	$postDateCreated .
+       	'</i>'; ?></p>
 							
                             <div class="box">
 
@@ -167,12 +154,12 @@
 
 										<div class="col-9 col-12-xsmall">
 											<h4>Titel:</h4>
-											<textarea style="resize: none;" name="title" id="title" rows="2"><?php echo $postTitle ?></textarea>
+											<textarea style="resize: none;" name="title" id="title" rows="2"><?php echo $postTitle; ?></textarea>
 										</div>
 
 										<div class="col-9 col-12-xsmall">
 											<h4 id="descriptionHeader">Beschrijving:</h4>
-											<textarea style="resize: none; font-size: 0.75rem;" name="description" id="description" placeholder="Een beschrijving van je blogpost" rows="4" maxlength="250"><?php echo $postDescription ?></textarea>
+											<textarea style="resize: none; font-size: 0.75rem;" name="description" id="description" placeholder="Een beschrijving van je blogpost" rows="4" maxlength="250"><?php echo $postDescription; ?></textarea>
 										</div>
 
 										<div class="col-12">
@@ -191,26 +178,19 @@
 											<h4>Geselecteerde foto's:</h4>
 											<p id="pathToFile" style="word-wrap: break-word;"><i>
 
-											<?php 
-											
-											$tempPath = json_decode($postPathToImage);
+											<?php
+           $tempPath = json_decode($postPathToImage);
 
-											if(!empty($tempPath) && is_array($tempPath))
-											{
-												foreach($tempPath as $key=>$val)
-												{
-													echo chopStringToImageName($val) . '<br>';
-												}
-											}
-											else if(!empty($tempPath) && !is_array($tempPath)){
-												echo chopStringToImageName($tempPath) . '<br>';
-											}
-											else
-											{
-												echo "Geen foto geupload";
-											}
-											
-											?>
+           if (!empty($tempPath) && is_array($tempPath)) {
+           	foreach ($tempPath as $key => $val) {
+           		echo chopStringToImageName($val) . '<br>';
+           	}
+           } elseif (!empty($tempPath) && !is_array($tempPath)) {
+           	echo chopStringToImageName($tempPath) . '<br>';
+           } else {
+           	echo 'Geen foto geupload';
+           }
+           ?>
 											
 											</i></p>
 										</div>
@@ -225,33 +205,21 @@
 									</div>
 								</form>
 
-								<?php
-
-									if(isset($_GET['error']))
-									{
-										if($_GET['error'] == "unvalidatedPhpActivation")
-										{
-											echo '<p><i style="color: red; word-wrap: break-word;">Er is een ongeauthoriseerde poging naar de PHP-servercode gemaakt. Gelieve hierboven gegevens in te vullen om een post te maken.</i></p>';
-										}
-										else if($_GET['error'] == "imageSizeTooBig")
-										{
-											echo '<p><i style="color: red; word-wrap: break-word;">De grootte van de foto die u probeert te uploaden is te groot! Max. grootte: 2,5 MB.</i></p>';
-										}
-										else if($_GET['error'] == "imageUploadError")
-										{
-											echo '<p><i style="color: red; word-wrap: break-word;">Er is iets fout gegaan met het uploaden van de foto! Foutcode: ' . $_GET['errorType'] . '</i></p>';
-										}
-										else if($_GET['error'] == "invalidImageType")
-										{
-											echo '<p><i style="color: red; word-wrap: break-word;">Ongeldig bestand geselecteerd! Geldige bestandstypen: .PNG, .JPG, .JPEG, .GIF </i></p>';
-										}
-										else if($_GET['error'] == "emptyFields")
-										{
-											echo '<p><i style="color: red; word-wrap: break-word;">Niet alle velden zijn ingevuld! Het is verplicht om alle tekstvelden in te vullen, maar een foto toevoegen is optioneel.</i></p>';
-										}
-									}
-
-								?>
+								<?php if (isset($_GET['error'])) {
+        	if ($_GET['error'] == 'unvalidatedPhpActivation') {
+        		echo '<p><i style="color: red; word-wrap: break-word;">Er is een ongeauthoriseerde poging naar de PHP-servercode gemaakt. Gelieve hierboven gegevens in te vullen om een post te maken.</i></p>';
+        	} elseif ($_GET['error'] == 'imageSizeTooBig') {
+        		echo '<p><i style="color: red; word-wrap: break-word;">De grootte van de foto die u probeert te uploaden is te groot! Max. grootte: 2,5 MB.</i></p>';
+        	} elseif ($_GET['error'] == 'imageUploadError') {
+        		echo '<p><i style="color: red; word-wrap: break-word;">Er is iets fout gegaan met het uploaden van de foto! Foutcode: ' .
+        			$_GET['errorType'] .
+        			'</i></p>';
+        	} elseif ($_GET['error'] == 'invalidImageType') {
+        		echo '<p><i style="color: red; word-wrap: break-word;">Ongeldig bestand geselecteerd! Geldige bestandstypen: .PNG, .JPG, .JPEG, .GIF </i></p>';
+        	} elseif ($_GET['error'] == 'emptyFields') {
+        		echo '<p><i style="color: red; word-wrap: break-word;">Niet alle velden zijn ingevuld! Het is verplicht om alle tekstvelden in te vullen, maar een foto toevoegen is optioneel.</i></p>';
+        	}
+        } ?>
 								<br>
 								<h3 id="deleteComments-header">Comments verwijderen:</h3>
 
@@ -265,47 +233,50 @@
 										</thead>
 										<tbody>
 											<?php
+           $sql = 'SELECT * FROM posts WHERE id=?;';
+           $stmt = mysqli_stmt_init($conn);
+           $postId = $_GET['postId'];
+           $i = 1;
 
-												$sql = "SELECT * FROM posts WHERE id=?;";
-												$stmt = mysqli_stmt_init($conn);
-												$postId = $_GET['postId'];
-												$i = 1;
-										
-												if(!mysqli_stmt_prepare($stmt, $sql))
-												{
-													header("Location: edit.php?postId=".$postId."&error=sqlCommentError1");
-													exit();
-												}
-												else
-												{
-													mysqli_stmt_bind_param($stmt, "s", $postId);
-													mysqli_stmt_execute($stmt);
-										
-													$result = mysqli_stmt_get_result($stmt);
-										
-													if($row = mysqli_fetch_assoc($result))
-													{
-														$allComments = json_decode($row['comments'], true);
-														
-														if(empty($allComments)){
-															echo '<p style="font-style: italic; font-size: 1.1rem;">Er zijn nog geen comments geplaatst.</p>';
-														}
-														else{
-															foreach($allComments as $key => $val){
-																$key1 = "'". $key ."'";
+           if (!mysqli_stmt_prepare($stmt, $sql)) {
+           	header(
+           		'Location: edit.php?postId=' .
+           			$postId .
+           			'&error=sqlCommentError1'
+           	);
+           	exit();
+           } else {
+           	mysqli_stmt_bind_param($stmt, 's', $postId);
+           	mysqli_stmt_execute($stmt);
 
-																echo '<tr id="comment'.$i.'">';
-																echo '<td class="comment-td" style="width: 20%; max-width: 200px;">'.$key.'</td>';
-																echo '<td class="comment-td" style="width: 75%; max-width: 500px;">'.$val.'</td>';
-																echo '<td style="width: 5%; line-height: 1.1rem; text-align: center;"><a onclick="removeComment('.$key1.')" class="icon regular fa-minus-square"></td>';
-																echo '</tr>';
-																$i++;
-															}
-														}
-			
-													}
-												}
-											?>
+           	$result = mysqli_stmt_get_result($stmt);
+
+           	if ($row = mysqli_fetch_assoc($result)) {
+           		$allComments = json_decode($row['comments'], true);
+
+           		if (empty($allComments)) {
+           			echo '<p style="font-style: italic; font-size: 1.1rem;">Er zijn nog geen comments geplaatst.</p>';
+           		} else {
+           			foreach ($allComments as $key => $val) {
+           				$key1 = "'" . $key . "'";
+
+           				echo '<tr id="comment' . $i . '">';
+           				echo '<td class="comment-td" style="width: 20%; max-width: 200px;">' .
+           					$key .
+           					'</td>';
+           				echo '<td class="comment-td" style="width: 75%; max-width: 500px;">' .
+           					$val .
+           					'</td>';
+           				echo '<td style="width: 5%; line-height: 1.1rem; text-align: center;"><a onclick="removeComment(' .
+           					$key1 .
+           					')" class="icon regular fa-minus-square"></td>';
+           				echo '</tr>';
+           				$i++;
+           			}
+           		}
+           	}
+           }
+           ?>
 
 										</tbody>
 									</table>
@@ -358,7 +329,9 @@
           removeformatPasted: true
 				});
 
-				$('#texteditor').trumbowyg('html', <?php echo "'".addslashes($postContents). "'" ?>);
+				$('#texteditor').trumbowyg('html', <?php echo "'" .
+    	addslashes($postContents) .
+    	"'"; ?>);
 
 				function getContent(){
 					document.getElementById("contents").value = $('#texteditor').trumbowyg('html');
@@ -395,7 +368,7 @@
 
 				function removeComment(i){
 					
-					var _postId = "<?php echo $_GET['postId'];?>";
+					var _postId = "<?php echo $_GET['postId']; ?>";
 
 					$.ajax({
 						type: "POST",

@@ -8,47 +8,47 @@
 
 // jshint camelcase:false
 jQuery.trumbowyg.langs.hr = {
-    viewHTML: 'Poglеdaj HTML kód',
+	viewHTML: "Poglеdaj HTML kód",
 
-    formatting: 'Formatiranjе',
-    p: 'Odlomak',
-    blockquote: 'Citat',
-    code: 'Kód',
-    header: 'Zaglavlje',
+	formatting: "Formatiranjе",
+	p: "Odlomak",
+	blockquote: "Citat",
+	code: "Kód",
+	header: "Zaglavlje",
 
-    bold: 'Podеbljano',
-    italic: 'Nakošeno',
-    strikethrough: 'Prеcrtano',
-    underline: 'Podvučеno',
+	bold: "Podеbljano",
+	italic: "Nakošeno",
+	strikethrough: "Prеcrtano",
+	underline: "Podvučеno",
 
-    strong: 'Podеbljano',
-    em: 'Istaknuto',
-    del: 'Obrisano',
+	strong: "Podеbljano",
+	em: "Istaknuto",
+	del: "Obrisano",
 
-    unorderedList: 'Neuređen popis',
-    orderedList: 'Uređen popis',
-    insertImage: 'Dodaj sliku',
-    insertVideo: 'Dodaj vidеo',
-    link: 'Povezica',
-    createLink: 'Dodaj povezicu',
-    unlink: 'Ukloni povezicu',
+	unorderedList: "Neuređen popis",
+	orderedList: "Uređen popis",
+	insertImage: "Dodaj sliku",
+	insertVideo: "Dodaj vidеo",
+	link: "Povezica",
+	createLink: "Dodaj povezicu",
+	unlink: "Ukloni povezicu",
 
-    justifyLeft: 'Lijеvo poravnanjе',
-    justifyCenter: 'Središnje poravnanjе',
-    justifyRight: 'Dеsno poravnanjе',
-    justifyFull: 'Obostrano poravnanjе',
+	justifyLeft: "Lijеvo poravnanjе",
+	justifyCenter: "Središnje poravnanjе",
+	justifyRight: "Dеsno poravnanjе",
+	justifyFull: "Obostrano poravnanjе",
 
-    horizontalRule: 'Horizontalna crta',
+	horizontalRule: "Horizontalna crta",
 
-    fullscreen: 'Puni zaslon',
+	fullscreen: "Puni zaslon",
 
-    close: 'Zatvori',
+	close: "Zatvori",
 
-    submit: 'Unеsi',
-    reset: 'Otkaži',
+	submit: "Unеsi",
+	reset: "Otkaži",
 
-    required: 'Obavеzno poljе',
-    description: 'Opis',
-    title: 'Naslov',
-    text: 'Tеkst'
+	required: "Obavеzno poljе",
+	description: "Opis",
+	title: "Naslov",
+	text: "Tеkst",
 };

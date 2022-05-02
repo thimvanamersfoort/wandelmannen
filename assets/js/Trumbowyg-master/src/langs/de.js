@@ -8,50 +8,50 @@
  */
 
 jQuery.trumbowyg.langs.de = {
-    viewHTML: 'HTML anzeigen',
+	viewHTML: "HTML anzeigen",
 
-    formatting: 'Formatierung',
-    p: 'Absatz',
-    blockquote: 'Zitat',
-    code: 'Code',
-    header: 'Überschrift',
+	formatting: "Formatierung",
+	p: "Absatz",
+	blockquote: "Zitat",
+	code: "Code",
+	header: "Überschrift",
 
-    bold: 'Fett',
-    italic: 'Kursiv',
-    strikethrough: 'Durchgestrichen',
-    underline: 'Unterstrichen',
+	bold: "Fett",
+	italic: "Kursiv",
+	strikethrough: "Durchgestrichen",
+	underline: "Unterstrichen",
 
-    strong: 'Wichtig',
-    em: 'Betont',
-    del: 'Gelöscht',
+	strong: "Wichtig",
+	em: "Betont",
+	del: "Gelöscht",
 
-    unorderedList: 'Ungeordnete Liste',
-    orderedList: 'Geordnete Liste',
+	unorderedList: "Ungeordnete Liste",
+	orderedList: "Geordnete Liste",
 
-    image: 'Bild',
-    insertImage: 'Bild einfügen',
-    insertVideo: 'Video einfügen',
-    link: 'Link',
-    createLink: 'Link einfügen',
-    unlink: 'Link entfernen',
+	image: "Bild",
+	insertImage: "Bild einfügen",
+	insertVideo: "Video einfügen",
+	link: "Link",
+	createLink: "Link einfügen",
+	unlink: "Link entfernen",
 
-    justifyLeft: 'Links ausrichten',
-    justifyCenter: 'Zentrieren',
-    justifyRight: 'Rechts ausrichten',
-    justifyFull: 'Blocksatz',
+	justifyLeft: "Links ausrichten",
+	justifyCenter: "Zentrieren",
+	justifyRight: "Rechts ausrichten",
+	justifyFull: "Blocksatz",
 
-    horizontalRule: 'Horizontale Linie einfügen',
-    removeformat: 'Formatierung entfernen',
+	horizontalRule: "Horizontale Linie einfügen",
+	removeformat: "Formatierung entfernen",
 
-    fullscreen: 'Vollbild',
+	fullscreen: "Vollbild",
 
-    close: 'Schließen',
+	close: "Schließen",
 
-    submit: 'Bestätigen',
-    reset: 'Abbrechen',
+	submit: "Bestätigen",
+	reset: "Abbrechen",
 
-    required: 'Erforderlich',
-    description: 'Beschreibung',
-    title: 'Titel',
-    text: 'Text'
+	required: "Erforderlich",
+	description: "Beschreibung",
+	title: "Titel",
+	text: "Text",
 };

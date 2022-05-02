@@ -1,16 +1,16 @@
 .mathMlContainer {
 	position: relative;
-	
+
 	&[inline="false"] {
 		display: block;
 		width: 100%;
 	}
-	
+
 	&:hover {
 		pointer-events: none;
 
 		&::after {
-			content: '\270E';
+			content: "\270E";
 			position: absolute;
 			top: 0;
 			right: 0;

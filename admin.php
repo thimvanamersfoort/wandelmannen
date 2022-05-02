@@ -2,12 +2,10 @@
 
 session_start();
 
-if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
-{
-	header("Location: login.php?error=unvalidatedPhpActivation");
+if (!isset($_SESSION['userName']) || !isset($_SESSION['userId'])) {
+	header('Location: login.php?error=unvalidatedPhpActivation');
 	exit();
 }
-
 ?>
 <!DOCTYPE HTML>
 <html>
@@ -57,23 +55,20 @@ if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
 					<div id="main">
 						<section>
 
-							<?php
-								if(isset($_GET['notif']))
-								{
-									if($_GET['notif'] == "upload")
-									{
-										echo '<div class="box">
+							<?php if (isset($_GET['notif'])) {
+       	if ($_GET['notif'] == 'upload') {
+       		echo '<div class="box">
 												<header>
 													<h2 style="color:green">Het uploaden van je post is gelukt!</h2>
-													<p>Je nieuwe post is <a href="post.php?postId='. $_GET['postId'].'" style="color:green">hier</a> te bekijken. Ook is de home-pagina met je laatste posts geupdated.</p>
+													<p>Je nieuwe post is <a href="post.php?postId=' .
+       			$_GET['postId'] .
+       			'" style="color:green">hier</a> te bekijken. Ook is de home-pagina met je laatste posts geupdated.</p>
 													<p>Klik op de button hieronder om deze melding te sluiten.</p>
 													<a href="admin.php" class="button small">Sluiten</a>
 												</header>
 											</div>';
-									}
-									else if($_GET['notif'] == "delete")
-									{
-										echo '<div class="box">
+       	} elseif ($_GET['notif'] == 'delete') {
+       		echo '<div class="box">
 												<header>
 													<h2 style="color:red">Je post is verwijderd!</h2>
 													<p>Je post is succesvol verwijderd van de website en uit de database.</p>
@@ -81,20 +76,19 @@ if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
 													<a href="admin.php" class="button small">Sluiten</a>
 												</header>
 											</div>';
-									}
-									else if($_GET['notif'] == "edit")
-									{
-										echo '<div class="box">
+       	} elseif ($_GET['notif'] == 'edit') {
+       		echo '<div class="box">
 										<header>
 											<h2 style="color:green">Je post is met succes aangepast!</h2>
-											<p>Je aangepaste post is <a href="post.php?postId='. $_GET['postId'] .'" style="color:green">hier</a> te bekijken. Ook is de home-pagina met je laatste posts geupdated.</p>
+											<p>Je aangepaste post is <a href="post.php?postId=' .
+       			$_GET['postId'] .
+       			'" style="color:green">hier</a> te bekijken. Ook is de home-pagina met je laatste posts geupdated.</p>
 											<p>Klik op de button hieronder om deze melding te sluiten.</p>
 											<a href="admin.php" class="button small">Sluiten</a>
 										</header>
 									</div>';
-									}
-								}
-							?>
+       	}
+       } ?>
 
 							<header>
 								<h2>Welkom terug, <?php echo $_SESSION['userName']; ?></h2>
@@ -106,25 +100,32 @@ if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
 								<h3 style="margin-bottom: 0.5rem;">Login met facebook:</h3>
 								
 								<?php
-								
-									include('fb-init.php');
+        include 'fb-init.php';
 
-									$redirectURL = "https://".$_SERVER['SERVER_NAME']."/fb-callback.php";
-									$permissions = ['pages_manage_posts','pages_show_list','pages_manage_metadata'];
-									$loginUrl = $helper->getLoginUrl($redirectURL, $permissions);
+        $redirectURL =
+        	'https://' . $_SERVER['SERVER_NAME'] . '/fb-callback.php';
+        $permissions = [
+        	'pages_manage_posts',
+        	'pages_show_list',
+        	'pages_manage_metadata',
+        ];
+        $loginUrl = $helper->getLoginUrl($redirectURL, $permissions);
 
-									if(!empty($_SESSION['FBRLH_state']) && !empty($_SESSION['page'])){
-										echo '<p style="line-height: 1.5rem;">Je bent succesvol ingelogd.<br> 
-										Geselecteerde Facebookpagina: '. $_SESSION['page']['name'].'<br><br>
+        if (!empty($_SESSION['FBRLH_state']) && !empty($_SESSION['page'])) {
+        	echo '<p style="line-height: 1.5rem;">Je bent succesvol ingelogd.<br> 
+										Geselecteerde Facebookpagina: ' .
+        		$_SESSION['page']['name'] .
+        		'<br><br>
 										<span style="font-size:0.8rem; font-style:italic">Zodra je een nieuwe post maakt, wordt er automatisch een notificatie geplaatst
 										op je gelinkte facebook-account. Om dit uit te schakelen, moet je uitloggen en
 										opnieuw inloggen op de blog.</span>
 										</p>';
-									}
-									else{
-										echo '<a href="' . htmlspecialchars($loginUrl) . '" class="button solid" >Log in with Facebook!</a>';
-									}
-								?>
+        } else {
+        	echo '<a href="' .
+        		htmlspecialchars($loginUrl) .
+        		'" class="button solid" >Log in with Facebook!</a>';
+        }
+        ?>
 
 
 							</div>
@@ -178,33 +179,21 @@ if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
 										</div>
 									</form>
 
-									<?php
-
-										if(isset($_GET['error']))
-										{
-											if($_GET['error'] == "unvalidatedPhpActivation")
-											{
-												echo '<p><i style="color: red; word-wrap: break-word;">Er is een ongeauthoriseerde poging naar de PHP-servercode gemaakt. Gelieve hierboven gegevens in te vullen om een post te maken.</i></p>';
-											}
-											else if($_GET['error'] == "imageSizeTooBig")
-											{
-												echo '<p><i style="color: red; word-wrap: break-word;">De grootte van de foto die u probeert te uploaden is te groot! Max. grootte: 5 MB.</i></p>';
-											}
-											else if($_GET['error'] == "imageUploadError")
-											{
-												echo '<p><i style="color: red; word-wrap: break-word;">Er is iets fout gegaan met het uploaden van de foto! Foutcode: ' . $_GET['errorType'] . '</i></p>';
-											}
-											else if($_GET['error'] == "invalidImageType")
-											{
-												echo '<p><i style="color: red; word-wrap: break-word;">Ongeldig bestand geselecteerd! Geldige bestandstypen: .PNG, .JPG, .JPEG, .GIF </i></p>';
-											}
-											else if($_GET['error'] == "emptyFields")
-											{
-												echo '<p><i style="color: red; word-wrap: break-word;">Niet alle velden zijn ingevuld! Het is verplicht om alle tekstvelden in te vullen, maar een foto toevoegen is optioneel.</i></p>';
-											}
-										}
-
-									?>
+									<?php if (isset($_GET['error'])) {
+         	if ($_GET['error'] == 'unvalidatedPhpActivation') {
+         		echo '<p><i style="color: red; word-wrap: break-word;">Er is een ongeauthoriseerde poging naar de PHP-servercode gemaakt. Gelieve hierboven gegevens in te vullen om een post te maken.</i></p>';
+         	} elseif ($_GET['error'] == 'imageSizeTooBig') {
+         		echo '<p><i style="color: red; word-wrap: break-word;">De grootte van de foto die u probeert te uploaden is te groot! Max. grootte: 5 MB.</i></p>';
+         	} elseif ($_GET['error'] == 'imageUploadError') {
+         		echo '<p><i style="color: red; word-wrap: break-word;">Er is iets fout gegaan met het uploaden van de foto! Foutcode: ' .
+         			$_GET['errorType'] .
+         			'</i></p>';
+         	} elseif ($_GET['error'] == 'invalidImageType') {
+         		echo '<p><i style="color: red; word-wrap: break-word;">Ongeldig bestand geselecteerd! Geldige bestandstypen: .PNG, .JPG, .JPEG, .GIF </i></p>';
+         	} elseif ($_GET['error'] == 'emptyFields') {
+         		echo '<p><i style="color: red; word-wrap: break-word;">Niet alle velden zijn ingevuld! Het is verplicht om alle tekstvelden in te vullen, maar een foto toevoegen is optioneel.</i></p>';
+         	}
+         } ?>
 							</div>
 
 							<p><i>Zodra je je blogpost gepubliceerd hebt, kijk dan op de <a href="index.php">homepagina</a>, waar je 
@@ -220,32 +209,24 @@ if(!isset($_SESSION['userName']) || !isset($_SESSION['userId']))
 							</div>
 							
 							<!-- Password hash -->
-							<?php
-								if(isset($_SESSION['userName'])){
-									if($_SESSION['userName'] == "admin")
-									{
-										require_once 'page-components/admin-pwd-hash.php';
-									}
-								}
-								else{
-									header("Location: admin.php?error=unvalidatedPhpActivation");
-									exit();
-								}
-							?>
+							<?php if (isset($_SESSION['userName'])) {
+       	if ($_SESSION['userName'] == 'admin') {
+       		require_once 'page-components/admin-pwd-hash.php';
+       	}
+       } else {
+       	header('Location: admin.php?error=unvalidatedPhpActivation');
+       	exit();
+       } ?>
 
 							<!-- Date to Time -->
-							<?php
-								if(isset($_SESSION['userName'])){
-									if($_SESSION['userName'] == "admin")
-									{
-										require_once 'page-components/admin-id-convert.php';
-									}
-								}
-								else{
-									header("Location: admin.php?error=unvalidatedPhpActivation");
-									exit();
-								}
-							?>
+							<?php if (isset($_SESSION['userName'])) {
+       	if ($_SESSION['userName'] == 'admin') {
+       		require_once 'page-components/admin-id-convert.php';
+       	}
+       } else {
+       	header('Location: admin.php?error=unvalidatedPhpActivation');
+       	exit();
+       } ?>
 							
 						</section>
 					</div>

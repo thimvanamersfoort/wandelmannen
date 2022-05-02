@@ -22,21 +22,17 @@ echo '
         <h4>Gehasht wachtwoord:</h4>
         <p name="hashedpwd" id="hashedpwd" class="box"><i style="word-wrap: break-word;">';
 
-if(!empty($_POST["pwd-hash"]))
-{
-    $password = $_POST["pwd-hash"];
-    $crypter = password_hash($password, PASSWORD_DEFAULT);
+if (!empty($_POST['pwd-hash'])) {
+	$password = $_POST['pwd-hash'];
+	$crypter = password_hash($password, PASSWORD_DEFAULT);
 }
 
-if(empty($crypter))
-{
-    echo "Field is empty!";
+if (empty($crypter)) {
+	echo 'Field is empty!';
+} else {
+	echo $crypter;
 }
-else
-{
-    echo $crypter;
-}
-                                
+
 echo '</i></p></div></div></form></div>';
 
 echo '<script>

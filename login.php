@@ -2,12 +2,10 @@
 
 session_start();
 
-if(isset($_SESSION['userName']) || isset($_SESSION['userId']))
-{
-	header("Location: admin.php");
+if (isset($_SESSION['userName']) || isset($_SESSION['userId'])) {
+	header('Location: admin.php');
 	exit();
 }
-
 ?>
 
 <!DOCTYPE HTML>
@@ -68,35 +66,21 @@ if(isset($_SESSION['userName']) || isset($_SESSION['userId']))
 							</form>
 
 							<p ><i style="color: red; word-wrap: break-word;">
-								<?php
-									if(isset($_GET['error']))
-									{
-										if($_GET['error'] == "emptyFields")
-										{
-											echo 'Vul alsjeblieft alle gegevens in!';
-										}
-										else if($_GET['error'] == "sqlError")
-										{
-											echo 'Gefaald om verbinding te maken met de database. Neem contact op met de website-beheerder.';
-										}
-										else if($_GET['error'] == "userNotFound")
-										{
-											echo 'Geen overeenkomende gebruiker gevonden in de database!';
-										}
-										else if($_GET['error'] == "unvalidatedPhpActivation")
-										{
-											echo 'Ongeauthoriseerde toegang tot de database. Log hierboven aub in.';
-										}
-										else if($_GET['error'] == "incorrectPassword")
-										{
-											echo 'Vul alstublieft het correcte wachtwoord in.';
-										}
-										else if($_GET['error'] == "unknownLoginError")
-										{
-											echo 'Er is iets fout gegaan! Probeer opnieuw in te loggen.';
-										}
-									}
-								?>
+								<?php if (isset($_GET['error'])) {
+        	if ($_GET['error'] == 'emptyFields') {
+        		echo 'Vul alsjeblieft alle gegevens in!';
+        	} elseif ($_GET['error'] == 'sqlError') {
+        		echo 'Gefaald om verbinding te maken met de database. Neem contact op met de website-beheerder.';
+        	} elseif ($_GET['error'] == 'userNotFound') {
+        		echo 'Geen overeenkomende gebruiker gevonden in de database!';
+        	} elseif ($_GET['error'] == 'unvalidatedPhpActivation') {
+        		echo 'Ongeauthoriseerde toegang tot de database. Log hierboven aub in.';
+        	} elseif ($_GET['error'] == 'incorrectPassword') {
+        		echo 'Vul alstublieft het correcte wachtwoord in.';
+        	} elseif ($_GET['error'] == 'unknownLoginError') {
+        		echo 'Er is iets fout gegaan! Probeer opnieuw in te loggen.';
+        	}
+        } ?>
 							</i></p>
 
 
